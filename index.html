@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARタッチピアノ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- カメラ映像 -->
+    <video id="camera" autoplay playsinline muted></video>
+
+    <!-- カメラ開始画面 -->
+    <div id="start-screen">
+        <h1>🎹 ARタッチピアノ</h1>
+        <p>カメラを起動してピアノを演奏しよう！</p>
+        <p id="start-status" role="status" aria-live="polite"></p>
+        <button id="start-button">カメラを起動する</button>
+    </div>
+
+    <!-- メイン画面 -->
+    <main id="piano-screen" class="hidden">
+
+        <header>
+            <h1>🎹 ARタッチピアノ</h1>
+            <p>カメラ映像の指先を鍵盤に合わせてください（最大10本）</p>
+        </header>
+
+        <div id="hand-status" role="status" aria-live="polite">
+            手をカメラに映してください
+        </div>
+
+        <!-- 演奏中の音 -->
+        <div id="note-display">
+            ここに音階が表示されます
+        </div>
+
+        <!-- ピアノ鍵盤 -->
+        <section id="piano">
+
+            <button class="key key-do"
+                    data-note="ド"
+                    data-audio="sound-do">
+                <span>ド</span>
+                <small>1</small>
+            </button>
+
+            <button class="key key-re"
+                    data-note="レ"
+                    data-audio="sound-re">
+                <span>レ</span>
+                <small>2</small>
+            </button>
+
+            <button class="key key-mi"
+                    data-note="ミ"
+                    data-audio="sound-mi">
+                <span>ミ</span>
+                <small>3</small>
+            </button>
+
+            <button class="key key-fa"
+                    data-note="ファ"
+                    data-audio="sound-fa">
+                <span>ファ</span>
+                <small>4</small>
+            </button>
+
+            <button class="key key-so"
+                    data-note="ソ"
+                    data-audio="sound-so">
+                <span>ソ</span>
+                <small>5</small>
+            </button>
+
+            <button class="key key-ra"
+                    data-note="ラ"
+                    data-audio="sound-ra">
+                <span>ラ</span>
+                <small>6</small>
+            </button>
+
+            <button class="key key-si"
+                    data-note="シ"
+                    data-audio="sound-si">
+                <span>シ</span>
+                <small>7</small>
+            </button>
+
+            <button class="key key-do2"
+                    data-note="高いド"
+                    data-audio="sound-do2">
+                <span>ド</span>
+                <small>8</small>
+            </button>
+
+        </section>
+
+        <div class="controls">
+            <button id="stop-camera">カメラを終了</button>
+        </div>
+
+    </main>
+
+    <!-- 音声ファイル -->
+    <audio id="sound-do" src="1-1do.mp3" preload="auto"></audio>
+    <audio id="sound-re" src="1-2re.mp3" preload="auto"></audio>
+    <audio id="sound-mi" src="1-3mi.mp3" preload="auto"></audio>
+    <audio id="sound-fa" src="1-4fa.mp3" preload="auto"></audio>
+    <audio id="sound-so" src="1-5so.mp3" preload="auto"></audio>
+    <audio id="sound-ra" src="1-6ra.mp3" preload="auto"></audio>
+    <audio id="sound-si" src="1-7si.mp3" preload="auto"></audio>
+    <audio id="sound-do2" src="1_8do.mp3" preload="auto"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
